@@ -1,1 +1,2 @@
-# Trabalho-Faculdade
+Superar as expectativas em cada projeto, trabalho e desafio acadêmico, aplicando nosso conhecimento, habilidades técnicas e uma mentalidade proativa para alcançar resultados notáveis, acreditamos no poder da colaboração, da pesquisa aprofundada e da aplicação prática do que aprendemos.
+Trabalho feito pelos Desenvolvedores: Michel Santos Mury, Luiz Gustavo Da Silva Cruz, João Menezes e João Pedro Cota Fernandes.
