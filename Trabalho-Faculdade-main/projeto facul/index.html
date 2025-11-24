@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Pizçaí — Home</title>
+</head>
+<body>
+    <header>
+        <div class="header-ajuste">
+            <div class="header-logo">
+                <a href="./index.html">
+                    <img class="logo" src="./assets/logo_PIZCAI.png" alt="logo Pizzaí" />
+                </a>
+            </div>
+            
+            <nav class="menu-links" aria-label="menu principal">
+                <a href="./cardapio.html">Cardápio</a>
+                <a href="./sobre.html">Sobre nos</a>
+                <a href="./fale-conosco.html">Fale conosco</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero centered-carousel-container">
+            <div class="carousel-track" id="carousel">
+                <div class="carousel-item"><img src="./assets/Pizza de chocolate Branco.webp" alt="Chocolate Branco"></div>
+                <div class="carousel-item"><img src="./assets/pizza de mussarela.jpg" alt="Mussarela"></div>
+                <div class="carousel-item"><img src="./assets/açai300.png" alt="Açaí 300ml"></div>
+                <div class="carousel-item"><img src="./assets/pizza de morango.webp" alt="Morango"></div>
+                <div class="carousel-item"><img src="./assets/Pizza Portuguesa.jpg" alt="Portuguesa"></div>
+            </div>
+            <button class="prev-button" aria-label="Anterior" onclick="mudarSlide(-1)">&#10094;</button>
+            <button class="next-button" aria-label="Próximo" onclick="mudarSlide(1)">&#10095;</button>
+        </section>
+
+
+        <section class="sobre card">
+            <p>Desde 2025 alegrando famílias com nossas pizzas e entregas rápidas. Qualidade e tradição perto de você.<br> Acesse o nosso cardapio</p>
+            <a href="./cardapio.html">
+            <img id="Imagem" src="./assets/logo_PIZCAI.png" alt="Nossa pizza destaque">
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <div id="Pe">
+            <h3>© 2025 Pizçaí. Todos os direitos reservados.</h3>
+        </div>
+    </footer>
+
+    <script>
+    // script mínimo para controlar o carrossel (opcional)
+    let slideIndex = 0;
+    const track = document.getElementById('carousel');
+    const total = track ? track.children.length : 0;
+
+    function showSlide(i){
+        if(!track) return;
+        slideIndex = (i + total) % total;
+        const percent = -slideIndex * (100 / Math.min(total, 3));
+        track.style.transform = `translateX(${percent}%)`;
+        // marca active para escala (opcional)
+        Array.from(track.children).forEach((el, idx) => el.classList.toggle('active', idx === slideIndex));
+    }
+    function mudarSlide(step){ showSlide(slideIndex + step); }
+    // autoplay simples
+    setInterval(() => { showSlide(slideIndex + 1); }, 4500);
+    showSlide(0);
+    </script>
+</body>
+</html>

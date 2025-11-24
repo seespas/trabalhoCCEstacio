@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizçaí — Quem Somos</title>
+    <style>
+ 
+        :root {
+            --cor-primaria: #ffffff; /* Vermelho Pizzaí */
+            --cor-texto-escuro: #ffffff;
+            --cor-texto-suave: #ffffff;
+            --cor-fundo: #FDFBF7;
+            --cor-branco: #fff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-escuro);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+
+        header {
+            background-color: #781326;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-ajuste {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            
+            /* ALTERAÇÃO AQUI: */
+            display: flex;
+            align-items: center; 
+            justify-content: center; /* Centraliza o grupo todo */
+            gap: 60px; /* Define a distância exata entre Logo <-> Título <-> Menu */
+            position: relative;
+        }
+
+        .header-logo img { height: 55px; width: auto; }
+
+        .header-titulo {
+            /* ALTERAÇÃO AQUI: Removi o position absolute para ele respeitar o gap */
+            position: static; 
+            transform: none;
+        }
+        
+        .header-titulo h1 {
+            color: var(--cor-primaria);
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .menu-links { display: flex; gap: 25px; }
+        .menu-links a:hover { color: var(--cor-primaria); font-weight: 700; }
+
+
+        main.container {
+            width: 100%;
+            max-width: 1800px; 
+            margin: 30px auto; 
+            padding: 0 20px;
+            flex: 1;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+
+        .sobre.card h2 {
+            color: var(--cor-primaria);
+            font-size: 2.8rem; 
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .sobre.card > p {
+            color: var(--cor-texto-suave);
+            margin-bottom: 4rem;
+            font-size: 1.3rem; 
+            max-width: 800px;
+            text-align: center;
+        }
+        .sobre-intro-top,
+        .sobre-intro-bottom {
+            max-width: 1000px;
+            background: linear-gradient(180deg, rgba(120,19,38,0.12), rgba(120,19,38,0.06));
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin: 6px 0; /* menos margem para ficar mais próximo */
+            color: #fff;
+            text-align: center;
+            font-size: 1.03rem;
+            line-height: 1.4;
+            box-shadow: 0 6px 14px rgba(120,19,38,0.06);
+            border: 1px solid rgba(255,255,255,0.04);
+            align-self: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #781326; /* cor principal do site */
+        }
+
+        .sobre-intro-top h2 {
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .sobre-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* reduzir gap entre top e bottom */
+            width: 100%;
+            min-height: auto; /* altura automática para não empurrar a grade */
+            padding: 6px 0;
+        }
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .team-card {
+            background: #781326;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 3rem 2rem; 
+            
+            width: 320px; 
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 6px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: #620554;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .img-container {
+            width: 180px;  
+            height: 180px;
+            margin-bottom: 1.5rem;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 3px var(--cor-primaria); 
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem; 
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            color: var(--cor-texto-escuro);
+        }
+
+        .team-card .role {
+            color: var(--cor-primaria);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .team-card .description {
+            font-size: 1.1rem; 
+            line-height: 1.5;
+            color: #fff;
+        }
+
+
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        footer h3 { color: var(--cor-primaria); font-size: 1.5rem; margin-bottom: 10px; }
+
+        @media (max-width: 1100px) {
+            .header-ajuste { flex-direction: column; gap: 15px; }
+            .header-titulo { position: static; transform: none; }
+
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-ajuste">
+            <div class="header-logo">
+                <a href="./index.html">
+                    <img class="logo" src="./assets/logo_PIZCAI.png" alt="logo Pizzaí" onerror="this.style.display='none'; document.querySelector('.header-titulo h1').innerText = '🍕 PIZZAÍ';"/>
+                </a>
+            </div>
+            <div class="header-titulo">
+                <h1>Sobre Nós</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="sobre card">
+
+            <div class="sobre-hero">
+                <div class="sobre-intro-top">
+                    <h2>Conheça Nossos Desenvolvedores</h2>
+                    <p>Somos um time de quatro programadores dedicados, cada um trazendo uma habilidade essencial para o projeto. Nossa paixão é transformar ideias em realidade digital, focando em soluções eficientes e código limpo.</p>
+                </div>
+            </div>
+
+            <div class="team-grid">
+                
+                <div class="team-card">
+                    <div class="img-container">
+                        <img src="./fotos nossas/Foto perfil.jpg" />
+                    </div>
+                    <h3>Luiz Gustavo da Silva Cruz</h3>
+                    <p class="description">Contribuição crucial com HTML (estrutura e conteúdo).</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="img-container">
+                        <img src="./fotos nossas/Foto Michel.jpg" />
+                    </div>
+                    <h3>Michel Santos Mury</h3>
+                    <p class="description">Foco e ajuda significativa com CSS e HTML (estilização, conteúdo e design).</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="img-container">
+                        <img src="./fotos nossas/Foto Jm.jpeg" />
+                    </div>
+                    <h3>João Menezes</h3>
+                    <p class="description">Auxílio com ideias cruciais e aspectos gerais de programação.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="img-container">
+                        <img src="./fotos nossas/Foto Jp.jpg" />
+                    </div>
+                    <h3>João Pedro Cota Fernandes</h3>
+                    <p class="description">Programação e suporte essencial em momentos de desafio técnico.</p>
+                </div>
+            </div>
+            
+            <div class="sobre-intro-bottom" style="max-width:900px; margin:40px auto 0;">
+                <p>Trabalhamos juntos para garantir que a estrutura (Luiz), o visual (Michel) e a lógica (Joãos) do nosso projeto sejam de alta qualidade.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div id="Pe">
+            <h3>Contate-nos:</h3>
+            <p>Para dúvidas ou desenvolvimento de projetos.</p>
+            <p>DevLMJJ@gmail.com</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+:root {
+    --cor-primaria: #A10505;
+    --cor-secundaria: #781326;
+    --cor-terciaria: #67143D;
+    --bg-page: #f4f4f4;
+    --card-bg: #ffffff;
+    --text: #333;
+    --max-width: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', Arial, sans-serif;
+    background: var(--bg-page);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   HEADER (Layout 2 Linhas - Corrigido)
+   ========================================= */
+header {
+    background: var(--cor-secundaria);
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    padding-top: 0.5rem;
+}
+
+.header-ajuste {
+    display: grid;
+    grid-template-columns: auto auto; 
+    justify-content: center; 
+    grid-template-areas: 
+        "areaLogo areaMenu"
+        "areaTitulo areaTitulo";
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.5rem 1rem 1rem 1rem;
+    column-gap: 2rem;
+    row-gap: 0.2rem;
+}
+ .header-titulo {
+            /* ALTERAÇÃO AQUI: Removi o position absolute para ele respeitar o gap */
+            position: static; 
+            transform: none;
+        }
+
+.header-titulo h1 {
+            color: var(--cor-primaria);
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+       
+/* Área 1: Logo */
+.header-logo {
+    grid-area: areaLogo;
+    display: flex; 
+    align-items: center;
+}
+
+.logo {
+    width: 90px; 
+    height: 70px;
+    display: block;
+    object-fit: contain;
+}
+
+/* Área 2: Menu */
+.menu-links {
+    grid-area: areaMenu;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding-bottom: 2px;
+}
+
+.menu-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: background 0.15s, transform 0.12s;
+    font-size: 0.95rem;
+}
+
+.menu-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Área 3: Título */
+.header-titulo {
+    grid-area: areaTitulo;
+    text-align: center;
+    width: 100%;
+}
+
+.header-titulo h1 {
+    color: #fff;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 1px;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   ESTRUTURA GERAL E CONTEÚDO
+   ========================================= */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    flex: 1;
+    width: 100%;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+}
+
+/* Carousel */
+.centered-carousel-container {
+    width: 100%;
+    max-width: var(--max-width);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-track { display: flex; transition: transform .5s ease-in-out; }
+.carousel-item { min-width: calc(100% / 3); flex-shrink: 0; padding: 10px; display: flex; justify-content: center; align-items: center; height: 320px; }
+.carousel-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; transform: scale(0.9); transition: transform .4s, box-shadow .4s; }
+.carousel-item.active img { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); }
+
+.prev-button, .next-button {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: var(--cor-primaria); color: #fff; border: none;
+    width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.prev-button { left: 12px; } 
+.next-button { right: 12px; }
+.prev-button:hover, .next-button:hover { background: var(--cor-terciaria); }
+
+/* Botões Gerais */
+.opcoes-botoes { display: flex; align-items: center; gap: 1rem; justify-content: center; padding: 1rem; }
+.btn-primary { background: var(--cor-primaria); color: #fff; padding: .9rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; }
+.btn-secondary { background: #fff; color: var(--cor-primaria); padding: .9rem 1.6rem; border-radius: 8px; border: 2px solid var(--cor-primaria); text-decoration: none; font-weight: 700; display: inline-block; }
+.ou { font-weight: 700; color: var(--text); }
+
+/* Seção Sobre */
+.sobre h2 { text-align: center; margin-bottom: 1rem; }
+.sobre img { width: 100%; max-width: 420px; display: block; margin: 1rem auto; border-radius: 8px; }
+.sobre p { margin-top: .6rem; color: #444; line-height: 1.6; text-align: center; }
+
+/* Footer */
+footer { background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-terciaria)); color: #fff; padding: 2.5rem 1rem; margin-top: auto; }
+#Pe { max-width: 900px; margin: 0 auto; text-align: center; }
+
+/* =========================================
+   PÁGINA FALE CONOSCO (ESTILOS NOVOS)
+   ========================================= */
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 4rem;
+    padding: 2rem 1rem;
+    align-items: start;
+}
+
+/* Lado Esquerdo (Infos) */
+.contact-info h2 { color: var(--cor-primaria); font-size: 1.8rem; margin-bottom: 1rem; font-weight: 900; }
+.contact-info .highlight-text { font-size: 1.1rem; color: #555; margin-bottom: 2.5rem; line-height: 1.6; }
+
+.info-box {
+    background: #fcfcfc;
+    border: 1px solid #eee;
+    border-left: 5px solid var(--cor-primaria);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.2s;
+}
+.info-box:hover { transform: translateX(5px); }
+.info-box h3 { color: var(--cor-secundaria); font-size: 1.1rem; margin-bottom: 0.5rem; }
+.info-box p { font-size: 0.95rem; color: #666; margin: 0; }
+
+.email-link {
+    color: var(--cor-primaria); font-weight: 700; text-decoration: none;
+    font-size: 1.05rem; display: inline-block; margin-top: 5px;
+    border-bottom: 2px solid transparent; transition: border-color 0.2s;
+}
+.email-link:hover { border-bottom-color: var(--cor-primaria); }
+
+/* Lado Direito (Formulário) */
+.contact-form-area { background: #fff; padding: 0.5rem; }
+.contact-form-area h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--text); }
+
+.form-padrao .input-group { margin-bottom: 1.5rem; }
+.form-padrao label {
+    display: block; margin-bottom: 0.6rem; font-weight: 700;
+    color: var(--cor-secundaria); font-size: 0.9rem;
+    text-transform: uppercase; letter-spacing: 0.5px;
+}
+.form-padrao input,
+.form-padrao textarea {
+    width: 100%; padding: 1rem;
+    border: 2px solid #e0e0e0; border-radius: 8px;
+    font-family: 'Lato', sans-serif; font-size: 1rem;
+    color: var(--text); background: #fafafa;
+    transition: all 0.3s ease;
+}
+.form-padrao input:focus,
+.form-padrao textarea:focus {
+    border-color: var(--cor-primaria); background: #fff;
+    outline: none; box-shadow: 0 0 0 4px rgba(161, 5, 5, 0.1);
+}
+.form-padrao textarea { resize: vertical; min-height: 120px; }
+
+.full-width {
+    width: 100%; cursor: pointer; font-size: 1.1rem; letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(161, 5, 5, 0.3); border: none;
+    background: var(--cor-primaria); color: #fff; padding: 1rem; border-radius: 8px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    font-weight: 700;
+}
+.full-width:hover {
+    background: var(--cor-terciaria);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(161, 5, 5, 0.4);
+}
+
+/* =========================================
+   RESPONSIVIDADE GERAL
+   ========================================= */
+@media (max-width: 900px) {
+    .carousel-item { min-width: 100%; height: 300px; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+    .info-box { max-width: 400px; margin: 0 auto 1.5rem auto; }
+}
+
+@media (max-width: 600px) {
+    .header-ajuste {
+        grid-template-columns: 1fr;
+        grid-template-areas: "areaLogo" "areaMenu" "areaTitulo";
+        gap: 0.8rem; justify-items: center;
+    }
+    .logo { width: 80px; height: 60px; }
+    .header-titulo h1 { font-size: 1.6rem; margin-top: 0; }
+    .menu-links { max-width: 100%; justify-content: center; }
+    .menu-links a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+    .carousel-item { height: 220px; }
+    .opcoes-botoes { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 90%; max-width: 320px; }
+}
+
+a, button { outline-offset: 3px; }
+button { font-family: inherit; }
